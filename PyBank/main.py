@@ -36,22 +36,19 @@ with open(csvpath) as csvfile:
         else:
           changes.append(int(previous) - int(row))
           previous = row
-    print(changes)
 
-    avg = sum/number_of_months        
-    print(avg)
-        
+    total = 0
+    for row in changes:
+      total += row
+    avg = total/len(changes)
+    print(f"Average Change: $ {avg}")        
 
+    # Neat example of the Stride feature of ranges in python I'm keeping here for future reference
     # for row in zip(unpacked_csv[0::2], unpacked_csv[1::2]):
     #   print(f"{row}")
   
-
-
     # max and min
-    just_the_numbers = []
-    for row in unpacked_csv:
-      just_the_numbers.append(row[1])
-    max = max(just_the_numbers)
-    min = min(just_the_numbers)
+    max = max(changes)
+    min = min(changes)
     print(f"Greatest Increase in Profits {max}")
     print(f"Greatest Decrease in Profits {min}")
