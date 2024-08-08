@@ -16,7 +16,6 @@ with open(csvpath) as csvfile:
     
     # Uses the length of the array to check of number of months
     number_of_months = len(unpacked_csv)
-    print(f"Total Months: {number_of_months}")
 
     # Total Profit
     # Also creates an array containing only the number
@@ -25,7 +24,6 @@ with open(csvpath) as csvfile:
     for row in unpacked_csv:
         just_the_numbers.append(row[1])
         sum += int(row[1])
-    print(f"Total: ${sum}")
 
     # Uses array of numbers to compute avg change
     previous = 0
@@ -34,14 +32,13 @@ with open(csvpath) as csvfile:
         if (previous == 0):
           previous = row
         else:
-          changes.append(int(previous) - int(row))
+          changes.append(int(row) - int(previous))
           previous = row
 
     total = 0
     for row in changes:
       total += row
-    avg = total/len(changes)
-    print(f"Average Change: $ {avg}")        
+    avg = total/len(changes)        
 
     # Neat example of the Stride feature of ranges in python I'm keeping here for future reference
     # for row in zip(unpacked_csv[0::2], unpacked_csv[1::2]):
@@ -50,5 +47,14 @@ with open(csvpath) as csvfile:
     # max and min
     max = max(changes)
     min = min(changes)
-    print(f"Greatest Increase in Profits {max}")
-    print(f"Greatest Decrease in Profits {min}")
+
+    # Write to a file
+    output_file = os.path.join("output.txt")
+
+    with open(output_file, "w", newline='') as datafile:
+      datafile.write(f"Total Months: {number_of_months}\n")
+      datafile.write(f"Total: ${sum}\n")
+      datafile.write(f"Average Change: $ {avg}\n")
+      datafile.write(f"Greatest Increase in Profits {max}\n")
+      datafile.write(f"Greatest Decrease in Profits {min}\n")
+
