@@ -1,3 +1,6 @@
+# I'm adding this as an extra commit because it's funny
+# So I didn't know about the list comprehension shortcut for unpacking CSVs. 
+# Then I read the code in the class I missed after finishing this part lmao
 import os, csv
 
 csvpath = os.path.join('Resources', 'budget_data.csv')
