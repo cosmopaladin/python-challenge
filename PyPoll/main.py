@@ -16,4 +16,7 @@ with open(csvpath) as csvfile:
     
     # Uses the length of the array to check of number of months
     number_of_votes = len(unpacked_csv)
-    print(number_of_votes)
+    print(f"Total Months: {number_of_votes}")
+
+    for row in unpacked_csv:
+        
