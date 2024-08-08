@@ -41,5 +41,15 @@ with open(csvpath) as csvfile:
           count = canadate[2]
           the_winner = canadate[0]
     print(f"Winner: {the_winner}")
+
+    # Write to a file
+    output_file = os.path.join("output.txt")
+    with open(output_file, "w", newline='') as datafile:
+      datafile.write(f"Total Months: {number_of_votes}\n")
+      datafile.write("--------------------\n")
+      for canadate_tuple in canadates_vote_totals:
+        datafile.write(f"{canadate_tuple[0]}: {round(canadate_tuple[1]*100, 3)}% ({canadate_tuple[2]})\n")
+      datafile.write("--------------------\n")
+      datafile.write(f"Winner: {the_winner}\n")
     
         
