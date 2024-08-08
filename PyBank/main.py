@@ -47,7 +47,14 @@ with open(csvpath) as csvfile:
     # max and min
     max = max(changes)
     min = min(changes)
-
+    
+    # Print to terminal
+    print(f"Total Months: {number_of_months}")
+    print(f"Total: ${sum}")
+    print(f"Average Change: $ {avg}")
+    print(f"Greatest Increase in Profits {max}")
+    print(f"Greatest Decrease in Profits {min}")
+   
     # Write to a file
     output_file = os.path.join("output.txt")
 
